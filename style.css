@@ -1,7 +1,7 @@
 /* Global Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
     margin: 0;
     padding: 0;
     color: #333;
@@ -9,12 +9,12 @@ body {
 
 /* Header Styling */
 .header {
-    background-color: #4CAF50;
+    background-color: #007acc;
     color: white;
     padding: 15px 0;
     text-align: center;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Search Bar Styling */
@@ -40,10 +40,13 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
     background-color: #45a049;
+    transform: translateY(-2px);
 }
 
 /* Card Container */
@@ -77,4 +80,11 @@ button:hover {
     margin: 5px 10px;
     font-size: 14px;
     color: #555;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
 }

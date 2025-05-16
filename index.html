@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Recommender</title>
-    <link rel = "stylesheet" href = "style.css" >
+    <title>Product Recommender Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class = "container">
-        <h2>Enter User ID to get recommendations</h2>
-        <input type="text" id = "user_id" placeholder = "user ID">
-        <button onclick="fletchrecomendations()">Get recommendations</button>
+    <div class="header">
+        <h1>🌟 Smart Product Recommender 🌟</h1>
+    </div>
 
+    <div class="search-bar">
+        <input type="text" id="user_id" placeholder="Enter User ID">
+        <button onclick="fetchRecommendations()">Get Recommendations</button>
+    </div>
 
-        <h3>Recommended Products:</h3>
-        <ul id = "recommendations"></ul>
-    <div>
+    <div id="recommendations" class="card-container">
+        <!-- Product Cards will load here -->
+    </div>
 
     <script src="app.js"></script>
 </body>
