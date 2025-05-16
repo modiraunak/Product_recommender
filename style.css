@@ -1,20 +1,20 @@
 /* Global Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #e0e0e0;
 }
 
 /* Header Styling */
 .header {
-    background-color: #007acc;
-    color: white;
+    background-color: #1f2937;
+    color: #e0e0e0;
     padding: 15px 0;
     text-align: center;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 /* Search Bar Styling */
@@ -27,25 +27,33 @@ body {
 input {
     padding: 10px;
     width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #374151;
     border-radius: 5px;
     margin-right: 10px;
+    background-color: #374151;
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #9ca3af;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #2563eb;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.5);
     transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #1d4ed8;
     transform: translateY(-2px);
 }
 
@@ -54,32 +62,33 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
-    padding: 0 20px;
+    padding: 0 20px 40px 20px;
 }
 
 /* Product Card Styling */
 .product-card {
-    background-color: white;
+    background-color: #111827;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
     transition: transform 0.2s ease-in-out;
+    color: #e0e0e0;
 }
 
 .product-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .product-card h4 {
-    margin: 15px 10px;
-    font-size: 18px;
-    color: #333;
+    margin: 15px 10px 5px 10px;
+    font-size: 20px;
+    color: #60a5fa; /* Soft blue */
 }
 
 .product-card p {
-    margin: 5px 10px;
+    margin: 5px 10px 15px 10px;
     font-size: 14px;
-    color: #555;
+    color: #9ca3af;
 }
 
 /* Responsive Design */
