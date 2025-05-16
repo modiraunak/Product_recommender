@@ -1,6 +1,6 @@
-product_id,product_name,category,price
-1,Wireless Mouse,Electronics,599
-2,Mechanical Keyboard,Electronics,2499
-3,Sports Shoes,Footwear,1999
-4,Running Jacket,Apparel,2999
-5,Bluetooth Speaker,Electronics,1499
+product_name,price,image_name
+Wireless Mouse,1599,mouse.jpg
+Mechanical Keyboard,4599,keyboard.jpg
+Gaming Headset,2599,headset.jpg
+Webcam,2099,webcam.jpg
+Mobile Stand,3099,stand.jpg
