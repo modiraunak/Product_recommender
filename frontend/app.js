@@ -1,21 +1,57 @@
-from flask import Flask, request, jsonify
-from database import init_db, db
-from models import Order
+function fetchRecommendations() {
+    const userId = document.getElementById("user_id").value;
 
-app = Flask(__name__)
-init_db(app)
+    if (!userId) {
+        alert("Please enter a User ID!");
+        return;
+    }
 
-@app.route('/confirm-purchase', methods=['POST'])
-def confirm_purchase():
-    data = request.json
-    new_order = Order(
-        user_id=data['user_id'],
-        product_name=data['product_name'],
-        price=data['price']
-    )
-    db.session.add(new_order)
-    db.session.commit()
-    return jsonify({"message": "Order Confirmed!"}), 200
+    fetch(`http://127.0.0.1:5000/recommend?user_id=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById("recommendations");
+            container.innerHTML = "";
 
-if __name__ == '__main__':
-    app.run(debug=True)
+            if (data.length === 0) {
+                container.innerHTML = "<h3>No recommendations found.</h3>";
+            } else {
+                data.forEach(item => {
+                    const card = document.createElement("div");
+                    card.className = "product-card";
+                    card.innerHTML = `
+                        <img src="${item.image_url}" alt="${item.product_name}">
+                        <h4>${item.product_name}</h4>
+                        <p class="price-tag">$${item.price}</p>
+                        <button onclick='confirmPurchase("${item.product_name}", "${item.price}")' class="buy-button">Buy Now</button>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
+function confirmPurchase(productName, price) {
+    const userId = document.getElementById("user_id").value;
+
+    fetch('http://127.0.0.1:5000/confirm-purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id: userId,
+            product_name: productName,
+            price: price
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
