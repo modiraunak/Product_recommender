@@ -1,15 +1,30 @@
+# recommender.py
 import pandas as pd
 
-# Load Data
-products = pd.read_csv('data/products.csv')
-user_data = pd.read_csv('data/user_data.csv')
+# File paths to your CSV data
+PRODUCTS_CSV = 'data/products.csv'
+USERS_CSV = 'data/user_data.csv'
 
-def get_recommendations(user_id):
-    # Get all products that the user has interacted with
-    user_products = user_data[user_data['user_id'] == user_id]['product_id'].tolist()
+# Load product and user data from CSV files
+def load_data():
+    products = pd.read_csv(PRODUCTS_CSV)
+    users = pd.read_csv(USERS_CSV)
+    return products, users
 
-    # For simplicity, just recommend the next 5 products after what the user has bought
-    recommended_products = products[~products['product_id'].isin(user_products)].head(5)
+# Function to generate recommendations for a given user_id
+def recommend_for_user(user_id):
+    products, users = load_data()
     
-    # Return as a list of dictionaries
-    return recommended_products[['product_name', 'category']].to_dict(orient='records')
+    # Dummy logic: Fetch 3 random products for testing
+    recommended_products = products.sample(3)
+    
+    # Map the products to the format expected by the frontend
+    recommendations = []
+    for _, row in recommended_products.iterrows():
+        recommendations.append({
+            "product_name": row['product_name'],
+            "price": row['price'],
+            "image_url": f"/assets/images/{row['image_name']}"
+        })
+    
+    return recommendations
