@@ -20,8 +20,9 @@ function fetchRecommendations() {
                     card.className = "product-card";
                     card.innerHTML = `
                         <img src="${item.image_url}" alt="${item.product_name}" />
-                        <h3>${item.product_name}</h3>
-                        <p>Price: $${item.price}</p>
+                        <h4>${item.product_name}</h4>
+                        <p>Price: ₹${item.price}</p>
+                        <button onclick="handleBuyNow('${item.product_name}', '${item.price}')" class="buy-button">Buy Now</button>
                     `;
                     container.appendChild(card);
                 });
@@ -30,4 +31,8 @@ function fetchRecommendations() {
         .catch(err => {
             console.error("Fetch error:", err);
         });
+}
+
+function handleBuyNow(productName, price) {
+    alert(`You selected ${productName} for ₹${price}`);
 }
