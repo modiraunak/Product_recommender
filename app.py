@@ -3,7 +3,7 @@ from flask_cors import CORS
 from recommender import get_recommendations
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend communication
+CORS(app)  
 
 @app.route('/recommend', methods=['GET'])
 def recommend():
