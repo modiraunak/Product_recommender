@@ -1,8 +1,6 @@
-# recommender.py
 import pandas as pd
 
-# File paths to your CSV data
-PRODUCTS_CSV = 'data/products.csv'
+PRODUCTS_CSV = 'data/products.csv'   # Update the path if necessary
 USERS_CSV = 'data/user_data.csv'
 
 # Load product and user data from CSV files
