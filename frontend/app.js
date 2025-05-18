@@ -34,5 +34,36 @@ function fetchRecommendations() {
 }
 
 function handleBuyNow(productName, price) {
-    alert(`You selected ${productName} for ₹${price}`);
+    const userId = document.getElementById("user_id").value;
+
+    if (!userId) {
+        alert("Please enter your User ID before purchasing!");
+        return;
+    }
+
+    const purchaseData = {
+        user_id: userId,
+        product_name: productName,
+        price: price
+    };
+
+    fetch('http://127.0.0.1:5000/confirm-purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(purchaseData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Order Confirmed!") {
+            alert(`✅ Order for ${productName} confirmed!`);
+        } else {
+            alert(`❌ Failed to confirm order.`);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("❌ An error occurred. Try again.");
+    });
 }
