@@ -37,7 +37,7 @@ def confirm_purchase():
         return jsonify({"message": "Order Failed!"}), 500
 
 
-# ✅ **New API to get Recommendations**
+# **New API to get Recommendations**
 @app.route('/recommend', methods=['GET'])
 def recommend():
     user_id = request.args.get('user_id')
